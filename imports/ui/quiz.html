@@ -1,0 +1,36 @@
+<template name="quiz">
+	<h1>You are {{returnCurrentUser}}</h1>
+	<div class="quiz-list">
+		<div class="quiz-list-section">
+			<div class="quiz-list-container col-xs-12 col-md-8 col-md-offset-2">
+				<!-- {{#each quizList}} -->
+					{{> quizListItem}}
+				<!-- {{/each}} -->
+			</div>
+		</div>
+	</div>
+</template>
+
+<!-- Support template in the page -->
+<template name="quizListItem">
+	<div class="quiz-list-item-container">
+		<div class="quiz-list-item-image">
+			IMAGE HERE 
+		</div>
+		<div class="quiz-list-item-title">
+		 	<h4>Title: {{title}} Points: {{points}}</h4>
+		</div>
+		<div class="pitch-list-item-description">
+			Description: {{description}}
+		</div>
+		<div class="pitch-list-item-answers">
+			Answer:
+			<form>
+  			  	<input type="text" id="quizAnswer" name="quizAnswer" placeholder="Your answer here">
+				<input type="submit">
+			</form>
+		</div>
+	</div>
+
+
+</template>

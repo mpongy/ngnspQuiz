@@ -1,0 +1,53 @@
+/* CSS declarations go here */
+body {
+
+}
+
+
+
+ul {
+  margin: 0;
+  padding: 0;
+  background: white;
+  color: black;
+}
+li {
+  position: relative;
+  list-style: none;
+  padding: 15px;
+  border-bottom: #eee solid 1px;
+}
+ 
+li .text {
+  margin-left: 10px;
+}
+
+.quiz-preview{}
+
+.quiz-preview-image{
+  width: 800px;
+  height: 400px;
+  background-color: grey;
+}
+
+
+.quiz-list{
+  margin-top: 9vh;
+}
+.quiz-list-section{
+
+}
+.quiz-list-item-container{
+  background-color:grey;
+}
+.quiz-list-item-image{ 
+  background-color:pink;
+  height:40vh;
+}
+.quiz-list-item-title{ 
+  background-color:yellow;
+  height:6vh;
+}
+.quiz-list-item-description{
+  background-color:purple;
+}
