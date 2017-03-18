@@ -2,9 +2,6 @@
 body {
 
 }
-
-
-
 ul {
   margin: 0;
   padding: 0;
@@ -17,15 +14,13 @@ li {
   padding: 15px;
   border-bottom: #eee solid 1px;
 }
- 
 li .text {
   margin-left: 10px;
 }
-
 .quiz-preview{}
 
 .quiz-preview-image{
-  width: 800px;
+  width: 100%;
   height: 400px;
   background-color: grey;
 }
@@ -38,16 +33,24 @@ li .text {
 
 }
 .quiz-list-item-container{
-  background-color:grey;
+  height:50vh;
 }
 .quiz-list-item-image{ 
-  background-color:pink;
-  height:40vh;
+  height:20vh;
 }
 .quiz-list-item-title{ 
-  background-color:yellow;
-  height:6vh;
+  height:5vh;
+  font-size: 2em;
 }
-.quiz-list-item-description{
-  background-color:purple;
+.quiz-list-item-answers{  
+  height:25vh;
+}
+.correctAnswer{
+  background-color: green;
+}
+.wrongAnswer{
+  background-color: red;
+}
+.hidden{
+  display: none;
 }

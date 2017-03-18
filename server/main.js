@@ -12,8 +12,9 @@ Meteor.startup(() => {
 Accounts.onCreateUser(function(options, user) {
    // Use provided profile in options, or create an empty object
    user.profile = options.profile || {};
-   // Assigns first and last names to the newly created user object
+   // Assigns names to the newly created user object
    user.profile.name = options.name;
+   // Assigns score to the newly created user object
    user.profile.score = options.score;
    // Returns the user object
    return user;
@@ -42,5 +43,3 @@ function populatePlayers(){
 		active: true
 	});
 };
-
-

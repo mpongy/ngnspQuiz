@@ -56,6 +56,9 @@
     <div class="page-header">
       <h1>Weekly Quiz</h1>
     </div>  
+    {{#if currentUser}}
+        <li><a href="#" class="logout">Logout</a></li>
+    {{else}}
     <form>
       <div class="form-group">
         <label for="exampleInputEmail1">Enterprise ID</label>
@@ -73,6 +76,7 @@
       <br>
       <input class="btn btn-primary btn-md" type="submit" value="Enter quiz">
     </form>  
+    {{/if}}
   {{else}}
     <h1>QUIZ IS NOT ACTIVE</h1>
   {{/if}}

@@ -26,3 +26,4 @@ iron:router
 session
 u2622:persistent-session
 accounts-password
+houston:admin

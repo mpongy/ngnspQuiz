@@ -1,33 +1,36 @@
 <template name="quiz">
-	<h1>You are {{returnCurrentUser}}</h1>
+	<h1>You are {{currentUser.profile.name}}</h1>
 	<div class="quiz-list">
 		<div class="quiz-list-section">
 			<div class="quiz-list-container col-xs-12 col-md-8 col-md-offset-2">
-				<!-- {{#each quizList}} -->
-					{{> quizListItem}}
-				<!-- {{/each}} -->
+				{{#each returnQuizQuestions}}
+					{{>quizListItem}}
+				{{/each}}
 			</div>
 		</div>
 	</div>
+	<input id="completeButton" type="submitdsd">
 </template>
 
 <!-- Support template in the page -->
 <template name="quizListItem">
-	<div class="quiz-list-item-container">
-		<div class="quiz-list-item-image">
-			IMAGE HERE 
-		</div>
+	<div class="quiz-list-item-container {{containerState}}" id="quizAnswer">
 		<div class="quiz-list-item-title">
-		 	<h4>Title: {{title}} Points: {{points}}</h4>
+			Title: {{title}} Points: {{points}}
+			<span id="correctAnswer" style="display: none;">Correct Answer is {{correctAnswer}}</span>
 		</div>
-		<div class="pitch-list-item-description">
-			Description: {{description}}
+		<div class="quiz-list-item-image">
+			<!-- <img src="{{imageURL}}" alt="hello">  -->
 		</div>
-		<div class="pitch-list-item-answers">
-			Answer:
-			<form>
-  			  	<input type="text" id="quizAnswer" name="quizAnswer" placeholder="Your answer here">
-				<input type="submit">
+		<div class="quiz-list-item-answers">
+			<form class="{{hideAnswers}}">
+				Answers:
+  			  	{{#each answers}}
+  			  	<br>
+  			  	<input type="radio" id="quizAnswer" name="quizAnswer" value="{{answer}}"> {{answer}}
+  			  	{{/each}}
+  			  	<br>
+				<input id="submitButton" type="submit">
 			</form>
 		</div>
 	</div>
