@@ -5,10 +5,6 @@ import { Session } from 'meteor/session';
 import './main.html';
 import '/imports/ui/quiz.js';
 
-import '/imports/api/answers.js';
-import '/imports/api/questions.js';
-import '/imports/api/answers.js';
-
 Template.leaderboard.helpers({
 	'player': function(){
 		return Meteor.users.find();
@@ -55,20 +51,20 @@ Template.entryPoint.events({
 		var dateOfBirthVar = event.target.inputDateOfBirth.value;
 		var checkbox = event.target.inputCheckbox.checked; 
 
-		console.log(playerNameVar);
-		console.log(dateOfBirthVar);
-		console.log(checkbox);
+		console.log("Name: " +playerNameVar);
+		console.log("DOB: " +dateOfBirthVar);
+		console.log("Checkbox: " + checkbox);
 
 		// if (dateOfBirthVar == Meteor.users.find({username: playerNameVar}).fetch()[0].password && event.target.inputCheckbox.checked){
 		if (event.target.inputCheckbox.checked){
 			Meteor.loginWithPassword(playerNameVar, dateOfBirthVar, function(error){
 			    if(error){
+			    	window.alert(error.reason);
 			        console.log(error.reason);
 			    } else {
-
 			    	// ADD TO ANSWERS COLLECTION HERE
 					//answers.addone(user: currentuser, year: ??, week:??, editionNumber:??)
-
+					insertSubmission();
 			        Router.go("quiz");
 			    }
 			});
@@ -76,7 +72,6 @@ Template.entryPoint.events({
 		else{
 			console.log('failed!');
 		}
-
  	},
  	'click .logout'(event){
         event.preventDefault();
@@ -84,18 +79,18 @@ Template.entryPoint.events({
     }
 });
 
-
-		//    if (dateOfBirthVar == Meteor.users.find({username: playerNameVar}).fetch()[0].dob && event.target.inputCheckbox.checked){
-		//    	console.log("Success!");
-		//    	Session.set("currentUser", playerNameVar);
-		//    	console.log("Current user is " + Session.get("currentUser"));
-		//    	Meteor.loginWithPassword(playerNameVar, dateOfBirthVar);
-		//    }
-		//    else{
-		//    	console.log("Failed!");
-		//    }
-		//    var retrieve = Meteor.users.find({username: playerNameVar}).fetch()[0].dob;
-		//    console.log(retrieve);
-		// Router.go('quiz');
-		//    // PlayerList.update({enterpriseID: "playerNameVar"},{score: 5});
+// function insertSubmission(){
+// 	Submissions.insert({'editionNumber': 1,
+// 					'user' : 'yuehao.pan',
+// 					'year' : 2017,
+// 					'week' : 11,
+// 					'answers' : [	{ '1' : 'prada' , 'pointsAwarded' : 5},
+// 									{ '2' : 'gucci' , 'pointsAwarded' : 5},
+// 									{ '3' : 'bvlgari' , 'pointsAwarded' : 5},
+// 									{ '4' : 'armani' , 'pointsAwarded' : 5},
+// 									{ '5' : 'gnome n bow' , 'pointsAwarded' : 5},
+// 						],
+// 					'totalPoints' : 25,
+// 	});
+// }
 

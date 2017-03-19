@@ -27,23 +27,23 @@ li .text {
 
 
 .quiz-list{
-  margin-top: 9vh;
+  /*margin-top: 9vh;*/
 }
 .quiz-list-section{
 
 }
 .quiz-list-item-container{
-  height:50vh;
+  /*height:50vh;*/
 }
 .quiz-list-item-image{ 
-  height:20vh;
+  /*height:20vh;*/
 }
 .quiz-list-item-title{ 
-  height:5vh;
-  font-size: 2em;
+/*  height:5vh;
+  font-size: 2em;*/
 }
 .quiz-list-item-answers{  
-  height:25vh;
+  /*height:25vh;*/
 }
 .correctAnswer{
   background-color: green;
@@ -51,6 +51,4 @@ li .text {
 .wrongAnswer{
   background-color: red;
 }
-.hidden{
-  display: none;
-}
+

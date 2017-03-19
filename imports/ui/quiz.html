@@ -9,31 +9,35 @@
 			</div>
 		</div>
 	</div>
-	<input id="completeButton" type="submitdsd">
+	<input id="completeButton" type="submitdsdfesfsesfe">
 </template>
 
-<!-- Support template in the page -->
 <template name="quizListItem">
-	<div class="quiz-list-item-container {{containerState}}" id="quizAnswer">
+
+	<div class="quiz-list-item-container" id="{{returnQuestionID}}">
 		<div class="quiz-list-item-title">
 			Title: {{title}} Points: {{points}}
 			<span id="correctAnswer" style="display: none;">Correct Answer is {{correctAnswer}}</span>
 		</div>
-		<div class="quiz-list-item-image">
-			<!-- <img src="{{imageURL}}" alt="hello">  -->
-		</div>
+<!-- 		<div class="quiz-list-item-image">
+			<img src="{{imageURL}}" alt="hello"> 
+		</div> -->
+
+	{{#if answered}}
+		YOU ALREADY ANSWERED
+	{{else}}
 		<div class="quiz-list-item-answers">
-			<form class="{{hideAnswers}}">
+			<form id="{{returnAnswerID}}">
 				Answers:
   			  	{{#each answers}}
-  			  	<br>
-  			  	<input type="radio" id="quizAnswer" name="quizAnswer" value="{{answer}}"> {{answer}}
+	  			  	<br>
+	  			  	<input type="radio" id="quizAnswer" name="quizAnswer" value="{{answer}}"> {{answer}}
   			  	{{/each}}
   			  	<br>
 				<input id="submitButton" type="submit">
 			</form>
 		</div>
-	</div>
-
-
+	{{/if}}
+	</div>	
 </template>
+

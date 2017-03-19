@@ -9,10 +9,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <div class="page-header">
+        <div class="page-header text-center">
           <h1>Welcome to NS Portal Weekly Quiz!</h1>
         </div>
-        {{>leaderboard}}
+        <!-- {{>leaderboard}} -->
         <br>
         {{>quizPreview}}
         <br>
@@ -35,7 +35,6 @@
     <h3>No players yet!</h3>
   </ul>
   {{/if}}
-
 </template>
 
 <template name="quizPreview">
@@ -53,11 +52,15 @@
 
 <template name="entryPoint">
   {{#if active}}
-    <div class="page-header">
-      <h1>Weekly Quiz</h1>
+    <div class="page-header text-center">
+      <h1>Enter Quiz</h1>
     </div>  
     {{#if currentUser}}
-        <li><a href="#" class="logout">Logout</a></li>
+        You are logged in as <span>{{currentUser.profile.name}}</span>
+        <ul>
+          <li><a href="/quiz">Back to quiz</a></li>
+          <li><a href="#" class="logout">Logout</a></li>
+        </ul>
     {{else}}
     <form>
       <div class="form-group">
@@ -89,7 +92,6 @@
 <template name="noitem">
     NO MATCH 
 </template>
-
 
 <template name="loginForm">
     NO MATCH 

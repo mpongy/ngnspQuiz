@@ -97,20 +97,24 @@ Template.quizListItem.events({
 
 		console.log("Correct answer is : " + this.correctAnswer);
 
+		var returnQuestionID = this._id;
+
 		if(submittedAnswer == this.correctAnswer){
-			Session.set('containerState', 'correctAnswer');
+			$("#"+ returnQuestionID).css("background-color", "green");
 			console.log("Answer is CORRECT!");
 			console.log("Adding item" + this.questionNumber + "to database");
 			//answers.addone( question (questionNumber: this.QuestionNumber, pointsAwarded: this.points), ) where editionNumber:??)
 			//points array[++1] : ++points
 		}
 		else{
-			Session.set('containerState', 'wrongAnswer');				
+			$("#"+ returnQuestionID).css("background-color", "red");
 			console.log("Answer is WRONG!!");
 			console.log("Adding item" + this.questionNumber + "to database");
 			//answers.addone( question (questionNumber: this.QuestionNumber, pointsAwarded: ZERO), ) where editionNumber:??)	
 			//pointsArray[++1] : ++ZERO
 		}
+		var returnAnswerID = this._id;		
+		$("form","#"+ returnAnswerID).hide();
 	},
 	// 'completeQuiz'(event) {
 	// 	for(pointsArray++; {
@@ -120,14 +124,13 @@ Template.quizListItem.events({
 });
 
 Template.quizListItem.helpers({
-  'containerState': function () {
-  	if (this._id == Session.get('answeredQuestionId')){
-  	    return Session.get('containerState');
-  	};
+  'returnQuestionID': function () {
+  	    return this._id;
   },
-  'hideAnswers': function () {
-  	if (this._id == Session.get('answeredQuestionId')){
-  	    return "hidden";
-  	};
-  },
+  'returnAnswerID': function () {
+  	    return this._id;
+  }, 
+  'answered': function () {
+  	    return false;
+  },    
 });
