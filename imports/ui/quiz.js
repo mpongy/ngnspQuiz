@@ -83,6 +83,9 @@ Template.quiz.helpers({
 		];
 		return questions;
 	},
+	'submission': function(){
+		return Submissions.findOne();
+	}
 });
 
 Template.quizListItem.events({
@@ -131,6 +134,6 @@ Template.quizListItem.helpers({
   	    return this._id;
   }, 
   'answered': function () {
-  	    return false;
+  	    return true;
   },    
 });

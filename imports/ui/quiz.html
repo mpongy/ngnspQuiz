@@ -10,10 +10,12 @@
 		</div>
 	</div>
 	<input id="completeButton" type="submitdsdfesfsesfe">
+	{{#each submission.answers}}
+		{{questionNumber}}  {{answer}} <br>
+	{{/each}}
 </template>
 
 <template name="quizListItem">
-
 	<div class="quiz-list-item-container" id="{{returnQuestionID}}">
 		<div class="quiz-list-item-title">
 			Title: {{title}} Points: {{points}}
@@ -22,9 +24,18 @@
 <!-- 		<div class="quiz-list-item-image">
 			<img src="{{imageURL}}" alt="hello"> 
 		</div> -->
-
 	{{#if answered}}
-		YOU ALREADY ANSWERED
+		<div class="quiz-list-item-answers">
+			<form id="{{returnAnswerID}}">
+				Answers:
+  			  	{{#each answers}}
+	  			  	<br>
+	  			  	<input type="radio" id="quizAnswer" name="quizAnswer" value="{{answer}}"> {{answer}}
+  			  	{{/each}}
+  			  	<br>
+				<input id="submitButton" type="submit">
+			</form>
+		</div>
 	{{else}}
 		<div class="quiz-list-item-answers">
 			<form id="{{returnAnswerID}}">

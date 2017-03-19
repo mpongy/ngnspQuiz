@@ -1,99 +1,99 @@
 <head>
-  <title>ngnspQuiz</title>
+	<title>ngnspQuiz</title>
 </head>
 
 <body>
 </body>
 
 <template name="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="page-header text-center">
-          <h1>Welcome to NS Portal Weekly Quiz!</h1>
-        </div>
-        <!-- {{>leaderboard}} -->
-        <br>
-        {{>quizPreview}}
-        <br>
-        {{>entryPoint}}
-      </div>
-    </div>
-  </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="page-header text-center">
+					<h1>Welcome to NS Portal Weekly Quiz!</h1>
+				</div>
+				<!-- {{>leaderboard}} -->
+				<br>
+				{{>quizPreview}}
+				<br>
+				{{>entryPoint}}
+			</div>
+		</div>
+	</div>
 </template>
 
 <template name="leaderboard">
-  <h3>Leaderboard</h3 >
-  {{#if playersExist}}
-    <ul>
-      {{#each player}}
-        <li>{{username}}: {{profile.score}}   <span class="label label-danger" style="float:right;">Yet to join: {{active}}</span></li>   
-      {{/each}}
-    </ul>
-  {{else}}
-  <ul>
-    <h3>No players yet!</h3>
-  </ul>
-  {{/if}}
+	<h3>Leaderboard</h3 >
+	{{#if playersExist}}
+		<ul>
+			{{#each player}}
+				<li>{{username}}: {{profile.score}}   <span class="label label-danger" style="float:right;">Yet to join: {{active}}</span></li>   
+			{{/each}}
+		</ul>
+	{{else}}
+	<ul>
+		<h3>No players yet!</h3>
+	</ul>
+	{{/if}}
 </template>
 
 <template name="quizPreview">
-  <div class="quiz-preview text-center">
-    <h3>Thiss week's quiz topic: </h3>
-    <h1>IBM Tealeaf</h1>
-    <div class="quiz-preview-image">
-      <img src="" alt="oops">
-    </div>
-    <div class="quiz-preview-writeup">
-     <p>IBM Tealeaf in awesome in NGNSP</p>
-    </div> 
-  </div>
+	<div class="quiz-preview text-center">
+		<h3>Thiss week's quiz topic: </h3>
+		<h1>IBM Tealeaf</h1>
+		<div class="quiz-preview-image">
+			<img src="" alt="oops">
+		</div>
+		<div class="quiz-preview-writeup">
+		 <p>IBM Tealeaf in awesome in NGNSP</p>
+		</div> 
+	</div>
 </template>
 
 <template name="entryPoint">
-  {{#if active}}
-    <div class="page-header text-center">
-      <h1>Enter Quiz</h1>
-    </div>  
-    {{#if currentUser}}
-        You are logged in as <span>{{currentUser.profile.name}}</span>
-        <ul>
-          <li><a href="/quiz">Back to quiz</a></li>
-          <li><a href="#" class="logout">Logout</a></li>
-        </ul>
-    {{else}}
-    <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Enterprise ID</label>
-        <div class="input-group">
-          {{> inputAutocomplete settings=settings id="enterpriseIDautocomplete" class="form-control" name="enterpriseIDautocomplete" placeholder="Enter your enterprise ID" }}
-          <span class="input-group-addon" id="basic-addon2">@accenture.com</span>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Date of Birth</label>
-        <input type="text" class="form-control" id="inputDateOfBirth" name="inputDateOfBirth" placeholder="Enter your date of birth: DDMMYYYY">
-      </div>
-      <input type="checkbox" id="inputCheckbox" name="inputCheckbox">I hereby swear that I am the above person
-      <br>
-      <br>
-      <input class="btn btn-primary btn-md" type="submit" value="Enter quiz">
-    </form>  
-    {{/if}}
-  {{else}}
-    <h1>QUIZ IS NOT ACTIVE</h1>
-  {{/if}}
+	{{#if active}}
+		<div class="page-header text-center">
+			<h1>Enter Quiz</h1>
+		</div>  
+		{{#if currentUser}}
+				You are logged in as <span>{{currentUser.profile.name}}</span>
+				<ul>
+					<li><a href="/quiz">Back to quiz</a></li>
+					<li><a href="#" class="logout">Logout</a></li>
+				</ul>
+		{{else}}
+		<form>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Enterprise ID</label>
+				<div class="input-group">
+					{{> inputAutocomplete settings=settings id="enterpriseIDautocomplete" class="form-control" name="enterpriseIDautocomplete" placeholder="Enter your enterprise ID" }}
+					<span class="input-group-addon" id="basic-addon2">@accenture.com</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Date of Birth</label>
+				<input type="text" class="form-control" id="inputDateOfBirth" name="inputDateOfBirth" placeholder="Enter your date of birth: DDMMYYYY">
+			</div>
+			<input type="checkbox" id="inputCheckbox" name="inputCheckbox">I hereby swear that I am the above person
+			<br>
+			<br>
+			<input class="btn btn-primary btn-md" type="submit" value="Enter quiz">
+		</form>  
+		{{/if}}
+	{{else}}
+		<h1>QUIZ IS NOT ACTIVE</h1>
+	{{/if}}
 </template>
 
 <template name="item">
-    {{enterpriseID}} 
+		{{username}} 
 </template>
 
 <template name="noitem">
-    NO MATCH 
+		NO MATCH 
 </template>
 
 <template name="loginForm">
-    NO MATCH 
+		NO MATCH 
 </template>
 

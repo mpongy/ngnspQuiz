@@ -55,16 +55,15 @@ Template.entryPoint.events({
 		console.log("DOB: " +dateOfBirthVar);
 		console.log("Checkbox: " + checkbox);
 
-		// if (dateOfBirthVar == Meteor.users.find({username: playerNameVar}).fetch()[0].password && event.target.inputCheckbox.checked){
 		if (event.target.inputCheckbox.checked){
 			Meteor.loginWithPassword(playerNameVar, dateOfBirthVar, function(error){
 			    if(error){
 			    	window.alert(error.reason);
 			        console.log(error.reason);
 			    } else {
-			    	// ADD TO ANSWERS COLLECTION HERE
-					//answers.addone(user: currentuser, year: ??, week:??, editionNumber:??)
+			    	Session.set('currentUser': playerNameVar);
 					insertSubmission();
+					console.log(insertSubmission());
 			        Router.go("quiz");
 			    }
 			});
@@ -79,18 +78,26 @@ Template.entryPoint.events({
     }
 });
 
-// function insertSubmission(){
-// 	Submissions.insert({'editionNumber': 1,
-// 					'user' : 'yuehao.pan',
-// 					'year' : 2017,
-// 					'week' : 11,
-// 					'answers' : [	{ '1' : 'prada' , 'pointsAwarded' : 5},
-// 									{ '2' : 'gucci' , 'pointsAwarded' : 5},
-// 									{ '3' : 'bvlgari' , 'pointsAwarded' : 5},
-// 									{ '4' : 'armani' , 'pointsAwarded' : 5},
-// 									{ '5' : 'gnome n bow' , 'pointsAwarded' : 5},
-// 						],
-// 					'totalPoints' : 25,
-// 	});
-// }
+function insertSubmission(){
+	if(false){
+		console.log(Submissions.find({'user': Session.get('currentUser'), 'editionNumber': 2}))
+		console.log("Record exists!")
+		console.log("DO NOT add new submission!")
+	}
+	else{
+		console.log("Add new submission!")
+		Submissions.insert({'editionNumber': 1,
+					'user' : 'yuehao.pan',
+					'year' : 2017,
+					'week' : 11,
+					'answers' : [	{ 'questionNumber' : 1, 'answer' : 'prada' , 'pointsAwarded' : 5},
+									{ 'questionNumber' : 2, 'answer' : 'gucci' , 'pointsAwarded' : 5},
+									{ 'questionNumber' : 3, 'answer' : 'LV' , 'pointsAwarded' : 5},
+									{ 'questionNumber' : 4, 'answer' : 'bvlgari' , 'pointsAwarded' : 5},
+									{ 'questionNumber' : 5, 'answer' : 'tiffany' , 'pointsAwarded' : 5},
+						],
+					'totalPoints' : 25,
+		});
+	}
+}
 
