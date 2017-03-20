@@ -10,7 +10,7 @@ Session.set('currentUser': playerNameVar);
 Template.quiz.helpers({
 	'returnQuizQuestions': function(){
 		console.log('Retrieving quiz questions!');
-		var questions = {
+		var quiz = {
 						'quizCode' : 123456,
 						'questions' : [
 							{
@@ -85,8 +85,8 @@ Template.quiz.helpers({
 							},
 
 						]};
-
-		return questions.questions;
+		Quiz.insert(quiz);
+		return quiz.questions;
 	},
 });
 

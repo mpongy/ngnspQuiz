@@ -21,29 +21,38 @@ Template.login.helpers({
 Template.login.events({
   	'submit form'(event) {
 		event.preventDefault(); 
-		
+
+		var quizCodeVar = event.target.inputQuizCode.value; 		
 		var playerNameVar = event.target.enterpriseIDautocomplete.value;     	
 		var dateOfBirthVar = event.target.inputDateOfBirth.value;
 		var checkbox = event.target.inputCheckbox.checked; 
+		var quizCodeInt = parseInt(quizCodeVar);
 
-		console.log("Name: " +playerNameVar);
-		console.log("DOB: " +dateOfBirthVar);
+		console.log("Quiz code: " + quizCodeVar);
+		console.log(quizCodeVar);
+		console.log("Name: " + playerNameVar);
+		console.log("DOB: " + dateOfBirthVar);
 		console.log("Checkbox: " + checkbox);
 
-		if (event.target.inputCheckbox.checked){
-			Meteor.loginWithPassword(playerNameVar, dateOfBirthVar, function(error){
-			    if(error){
-			    	window.alert(error.reason);
-			        console.log(error.reason);
-			    } else {
-			    	Session.set('currentUser': playerNameVar);
-			        Router.go("quiz");
-			    }
-			});
+		if(Quiz.findOne({'quizCode' : quizCodeInt})){
+			if (event.target.inputCheckbox.checked){
+				Meteor.loginWithPassword(playerNameVar, dateOfBirthVar, function(error){
+				    if(error){
+				    	window.alert(error.reason);
+				        console.log(error.reason);
+				    } else {
+				        Router.go("quiz/"+quizCodeInt);
+				        // Router.go("quiz/"+quizCodeVar);
+				    }
+				});
+			}
+			else{
+				alert("Agree to privacy policy")		
+			}	
+		}else{
+			alert("Invalid quiz code!")
 		}
-		else{
-			console.log('failed!');
-		}
+
  	},
  	'click .logout'(event){
         event.preventDefault();

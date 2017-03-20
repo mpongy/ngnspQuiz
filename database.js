@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 
 Submissions = new Mongo.Collection('submissions');
-Questions = new Mongo.Collection('questions');
+Quiz = new Mongo.Collection('quiz');
 QuizUsers = new Mongo.Collection('quizusers');
 
 
