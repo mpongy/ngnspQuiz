@@ -1,61 +1,4 @@
-<head>
-	<title>ngnspQuiz</title>
-</head>
-
-<body>
-</body>
-
-<template name="home">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
-				<div class="page-header text-center">
-					<h1>Welcome to NS Portal Weekly Quiz!</h1>
-				</div>
-				{{>leaderboard}}
-				<br>
-				{{>quizPreview}}
-				<br>
-				{{>quizEntry}}
-			</div>
-		</div>
-	</div>
-</template>
-
-<template name="leaderboard">
-	<h3>Leaderboard</h3 >
-	{{#if playersExist}}
-		<ul>
-			{{#each player}}
-				<li>{{username}}: {{profile.score}}   <span class="label label-danger" style="float:right;">Yet to join: {{active}}</span></li>   
-			{{/each}}
-		</ul>
-	{{else}}
-	<ul>
-		<h3>No players yet!</h3>
-	</ul>
-	{{/if}}
-</template>
-
-<template name="quizPreview">
-	<div class="quiz-preview text-center">
-		<h3>Thiss week's quiz topic: </h3>
-		<h1>IBM Tealeaf</h1>
-		<div class="quiz-preview-image">
-			<img src="" alt="oops">
-		</div>
-		<div class="quiz-preview-writeup">
-		 <p>IBM Tealeaf in awesome in NGNSP</p>
-		</div> 
-	</div>
-</template>
-
-<template name="quizEntry">
-	<form>
-	<input type="text" class="" id="" name="" placeholder="ENTER QUIZ CODE">
-	</form>
-</template>
-<!-- <template name="entryPoint">
+<template name="login">
 	{{#if active}}
 		<div class="page-header text-center">
 			<h1>Enter Quiz</h1>
@@ -100,5 +43,4 @@
 
 <template name="loginForm">
 		NO MATCH 
-</template> -->
-
+</template>
