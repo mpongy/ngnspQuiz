@@ -3,12 +3,9 @@
 	<div class="quiz-list">
 		<div class="quiz-list-section">
 			<div class="quiz-list-container col-xs-6 col-md-6">
-				<form>
 				{{#each returnQuizQuestions}}
 					{{>quizListItem}}
 				{{/each}}
-				<input id="completeButton" type="submit">
-				</form>
 			</div>
 		</div>
 	</div>
@@ -23,17 +20,20 @@
 					<span id="correctAnswer" style="display: none;">Correct Answer is {{correctAnswer}}</span>
 				</div>
 			</div>
-			<div class="quiz-list-item-image">
+<!-- 			<div class="quiz-list-item-image">
 				<img src="{{imageURL}}" alt="hello"> 
-			</div>
+			</div> -->
 			<div class="quiz-list-item-answers">
 				<div id="{{returnAnswerID}}">
-					Answers:
-	  			  	{{#each answers}}
-		  			  	<br>
-		  			  	<input type="radio" id="question{{answer}}" name="quizAnswer" value="{{answer}}"> {{answer}}
-	  			  	{{/each}}
-	  			  	<br>
+					<form>
+						Answers:
+		  			  	{{#each answers}}
+			  			  	<br>
+			  			  	<input type="radio" id="question{{answer}}" name="quizAnswer" value="{{answer}}"> {{answer}}
+		  			  	{{/each}}
+	  			  		<br>
+	  			  		<input id="completeButton" type="submit">
+	  			  	</form>
 				</div>
 			</div>
 		</div>

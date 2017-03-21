@@ -1,9 +1,6 @@
 import './login.html';
 
 Template.login.helpers({
-	'active': function(){
-		return true;
-	},
 	settings: function() {
 		return {
 			limit: 10,
@@ -41,8 +38,13 @@ Template.login.events({
 				    	window.alert(error.reason);
 				        console.log(error.reason);
 				    } else {
-				        Router.go("quiz/"+quizCodeInt);
-				        // Router.go("quiz/"+quizCodeVar);
+ 						if(Submissions.findOne({'user': playerNameVar, 'quizCode': quizCodeInt})){
+ 							Router.go("/quiz");
+ 						}
+ 						else{
+				    		insertSubmission(); 
+							Router.go("/quiz");					
+ 						}
 				    }
 				});
 			}
@@ -59,3 +61,17 @@ Template.login.events({
         Meteor.logout();
     }
 });
+
+function checkSubmission(){
+}
+
+function insertSubmission(){
+	console.log("inserting!");
+	Submissions.insert({
+				'editionNumber': 1,
+				'quizCode' : 123456,
+				'user' : 'yuehao.pan',
+				'year' : 2017,
+				'week' : 11,
+	});
+}

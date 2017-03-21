@@ -1,38 +1,31 @@
 <template name="login">
-	{{#if active}}
-		<div class="page-header text-center">
-			<h1>Enter Quiz</h1>
-		</div>  
-		{{#if currentUser}}
-				You are logged in as <span>{{currentUser.profile.name}}</span>
-				<ul>
-					<li><a href="#" class="logout">Logout</a></li>
-				</ul>
-		{{else}}
-		<form>
-			<div class="form-group">
-				<label>Quiz Code</label>
-				<input type="text" class="form-control" id="inputQuizCode" name="inputQuizCode" placeholder="******">
-			</div>
-			<div class="form-group">
-				<label>Enterprise ID</label>
-				<div class="input-group">
-					{{> inputAutocomplete settings=settings id="enterpriseIDautocomplete" class="form-control" name="enterpriseIDautocomplete" placeholder="Enter your enterprise ID" }}
-					<span class="input-group-addon" id="basic-addon2">@accenture.com</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label>Date of Birth</label>
-				<input type="text" class="form-control" id="inputDateOfBirth" name="inputDateOfBirth" placeholder="Enter your date of birth: DDMMYYYY">
-			</div>
-			<input type="checkbox" id="inputCheckbox" name="inputCheckbox">I hereby swear that I am the above person
-			<br>
-			<br>
-			<input class="btn btn-primary btn-md" type="submit" value="Enter quiz">
-		</form>  
-		{{/if}}
+	{{#if currentUser}}
+			You are logged in as <span>{{currentUser.profile.name}}</span>
+			<ul>
+				<li><a href="#" class="logout">Logout</a></li>
+			</ul>
 	{{else}}
-		<h1>QUIZ IS NOT ACTIVE</h1>
+	<form>
+		<div class="form-group">
+			<label>Quiz Code</label>
+			<input type="text" class="form-control" id="inputQuizCode" name="inputQuizCode" placeholder="******">
+		</div>
+		<div class="form-group">
+			<label>Enterprise ID</label>
+			<div class="input-group">
+				{{> inputAutocomplete settings=settings id="enterpriseIDautocomplete" class="form-control" name="enterpriseIDautocomplete" placeholder="Enter your enterprise ID" }}
+				<span class="input-group-addon" id="basic-addon2">@accenture.com</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Date of Birth</label>
+			<input type="text" class="form-control" id="inputDateOfBirth" name="inputDateOfBirth" placeholder="Enter your date of birth: DDMMYYYY">
+		</div>
+		<input type="checkbox" id="inputCheckbox" name="inputCheckbox">I hereby swear that I am the above person
+		<br>
+		<br>
+		<input class="btn btn-primary btn-md" type="submit" value="Enter quiz">
+	</form>  
 	{{/if}}
 </template>
 

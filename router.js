@@ -9,7 +9,7 @@ Router.route('/', function () {
   });
 });
       
-Router.route('/quiz/:quizCode', function () {
+Router.route('/quiz', function () {
   this.render('quiz', {
   });
 });
