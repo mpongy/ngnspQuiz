@@ -14,7 +14,7 @@
 				</div>
 				{{>leaderboard}}
 				<br>
-				{{>quizPreview}}
+				<!-- {{>quizPreview}} -->
 				<br>
 				{{>quizEntry}}
 			</div>
@@ -25,11 +25,28 @@
 <template name="leaderboard">
 	<h3>Leaderboard</h3>
 	{{#if playersExist}}
+		<ul class="nav nav-pills nav-justified">
+			<li class="active"><a id="thisWeek">This week</a></li>
+			<li><a id="allTime">All time</a></li>
+		</ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="thisWeekPane">
 		<ul>
-			{{#each player}}
-				<li>{{username}}: {{profile.score}}   <span class="label label-danger" style="float:right;">Yet to join: {{active}}</span></li>   
+			{{#each playerWeeklyScore}}
+				<li>{{username}}: {{profile.thisWeeksScore}}   <span class="label label-danger" style="float:right;">Yet to join: {{active}}</span></li>   
 			{{/each}}
 		</ul>
+    </div>
+    <div class="tab-pane" id="allTimePane">
+		<ul>
+			{{#each playerTotalScore}}
+				<li>{{username}}: {{profile.totalScore}}   <span class="label label-danger" style="float:right;">Yet to join: {{active}}</span></li>   
+			{{/each}}
+		</ul>
+    </div>
+  </div>		
+
+
 	{{else}}
 	<ul>
 		<h3>No players yet!</h3>

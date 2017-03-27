@@ -9,8 +9,20 @@ Router.route('/', function () {
   });
 });
       
-Router.route('/quiz', function () {
+Router.route('/quiz/:quizNumber', function () {
   this.render('quiz', {
+    data: function(){
+      return Quizes.findOne().questions;
+    }
   });
 });
      
+Router.route('/results', function () {
+  this.render('results', {
+  });
+});     
+
+Router.route('/leaderboard', function () {
+  this.render('leaderboardPage', {
+  });
+});   

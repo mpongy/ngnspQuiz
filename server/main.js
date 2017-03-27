@@ -14,8 +14,10 @@ Accounts.onCreateUser(function(options, user) {
    user.profile = options.profile || {};
    // Assigns names to the newly created user object
    user.profile.name = options.name;
-   // Assigns score to the newly created user object
-   user.profile.score = options.score;
+   // Assigns total score to the newly created user object
+   user.profile.totalScore = options.totalScore;
+   // Assigns this week's score to the newly created user object
+   user.profile.thisWeeksScore = options.thisWeeksScore;
    // Returns the user object
    return user;
 });
@@ -25,21 +27,24 @@ function populatePlayers(){
 		name: 'Pan Yuehao',
 		username: 'yuehao.pan',
 		password: '01234567',
-		score: '50',
+		totalScore: 150,
+		thisWeeksScore: 15,
 		active: true
 	});
 	Accounts.createUser({
 		name: 'Ganesh Kumar',
 		username: 'ganesh.e.kumar',
 		password: '12345678',
-		score: '100',
+		totalScore: 100,
+		thisWeeksScore: 10,
 		active: true
 	});
 	Accounts.createUser({
 		name: 'Mellavin Mar',
 		username: 'mellavin.mar',
 		password: '23456789',
-		score: '80',
+		totalScore: 50,
+		thisWeeksScore: 5,
 		active: true
 	});
 };

@@ -1,3 +1,8 @@
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
+import { Session } from 'meteor/session';
+
 import './login.html';
 
 Template.login.helpers({
@@ -31,7 +36,7 @@ Template.login.events({
 		console.log("DOB: " + dateOfBirthVar);
 		console.log("Checkbox: " + checkbox);
 
-		if(Quiz.findOne({'quizCode' : quizCodeInt})){
+		if(Quizes.findOne({'quizCode' : quizCodeInt})){
 			if (event.target.inputCheckbox.checked){
 				Meteor.loginWithPassword(playerNameVar, dateOfBirthVar, function(error){
 				    if(error){
@@ -39,10 +44,14 @@ Template.login.events({
 				        console.log(error.reason);
 				    } else {
  						if(Submissions.findOne({'user': playerNameVar, 'quizCode': quizCodeInt})){
+ 							console.log(Submissions.findOne({'user': playerNameVar, 'quizCode': quizCodeInt}));
+							console.log('submission exists!');				    		 			
  							Router.go("/quiz");
  						}
  						else{
-				    		insertSubmission(); 
+ 							console.log('insert new submission!');				    		 
+				    		insertSubmission();
+ 							console.log(Submissions.findOne({'user': playerNameVar, 'quizCode': quizCodeInt}));
 							Router.go("/quiz");					
  						}
 				    }

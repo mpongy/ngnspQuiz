@@ -1,0 +1,37 @@
+<template name="results">
+
+
+<div class="row">
+	<div class="col-xs-4">
+		<div class="row">
+			<div class="col-xs-4">
+				<h3>Correct anwswer</h3>	
+				{{#each returnSubmittedAnswers.correctAnswers}}
+					{{>resultsItems}}
+				{{/each}}		
+			</div>
+			<div class="col-xs-4">
+				<h3>You answered</h3>
+				{{#each returnSubmittedAnswers.answers}}
+					{{>resultsItems}}
+				{{/each}}
+			</div>
+			<div class="col-xs-4">	
+				<h3>Points awarded</h3>	
+				{{#each returnSubmittedAnswers.points}}
+					{{>resultsItems}}
+				{{/each}}
+			</div>
+		</div>
+		<a href="/leaderboard">Go to leaderboard</a>
+	</div>
+</div>
+
+
+</template>
+
+<template name="resultsItems">
+		{{this}}
+		<br>
+</template>
+

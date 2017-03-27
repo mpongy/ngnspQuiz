@@ -1,10 +1,10 @@
 import { Mongo } from 'meteor/mongo';
 
 Submissions = new Mongo.Collection('submissions');
-Quiz = new Mongo.Collection('quiz');
+Quizes = new Mongo.Collection('quizes');
 QuizUsers = new Mongo.Collection('quizusers');
 
-var quiz = {
+var quiz1 = {
 	'quizCode' : 123456,
 	'questions' : [
 		{
@@ -24,60 +24,137 @@ var quiz = {
 		{
 			"_id" : 2,							
 			"questionNumber" : 2,
-			"title" : " Question 2",
+			"title" : "2. What is Jeremy Lim's favourite line",
 			"answers" : [
-				{"answer" : 1}, 
-				{"answer" : 2}, 
-				{"answer" : 3}, 
-				{"answer" : 4}
+				{"answer" : "We are family"}, 
+				{"answer" : "Lets go for lunch"}, 
+				{"answer" : "Bye Jimson"}, 
+				{"answer" : "Blue sky Friday"}
 				],
-			"correctAnswer": "Gnome n Bow",
-			"points" : 5,
+			"correctAnswer": "We are family",
+			"points" : 10,
 			"imageURL" : ""
 		},
 		{
 			"_id" : 3,								
 			"questionNumber" : 3,							
-			"title" : " Question 3",
+			"title" : "What is Hakim's favourite food",
 			"answers" : [
-				{"answer" : 1}, 
-				{"answer" : 2}, 
-				{"answer" : 3}, 
-				{"answer" : 4}
+				{"answer" : "KFC"}, 
+				{"answer" : "McDonalds"}, 
+				{"answer" : "Koufu"}, 
+				{"answer" : "Pastamania"}
 				],
-			"correctAnswer": "Gnome n Bow",
-			"points" : 5,
+			"correctAnswer": "KFC",
+			"points" : 15,
 			"imageURL" : ""
 		},
 		{
 			"_id" : 4,	
 			"questionNumber" : 4,							
-			"title" : " Question 4",
+			"title" : "How many weekend downtimes have we attended?",
 			"answers" : [
-				{"answer" : 1}, 
-				{"answer" : 2}, 
-				{"answer" : 3}, 
-				{"answer" : 4}
+				{"answer" : 8}, 
+				{"answer" : 16}, 
+				{"answer" : 32}, 
+				{"answer" : 64}
 				],
-			"correctAnswer": "Gnome n Bow",
-			"points" : 5,
+			"correctAnswer": 16,
+			"points" : 20,
 			"imageURL" : ""
 		},
 		{
 			"_id" : 5,								
 			"questionNumber" : 5,							
-			"title" : " Question 5",
+			"title" : "Who is Ganesh's look a like",
 			"answers" : [
-				{"answer" : 1}, 
-				{"answer" : 2}, 
-				{"answer" : 3}, 
-				{"answer" : 4}
+				{"answer" : "Ance Kujumon"}, 
+				{"answer" : "Yuehao Pan"}, 
+				{"answer" : "Preeti Ramachandran"}, 
+				{"answer" : "Ayush Modi"}
 				],
-			"correctAnswer": "Gnome n Bow",
-			"points" : 5,
+			"correctAnswer": "Ance Kujumon",
+			"points" : 25,
 			"imageURL" : ""
 		},
 
 ]};
 
-Quiz.insert(quiz);
+var quiz2 = {
+	'quizCode' : 456789,
+	'questions' : [
+		{
+			"_id" : 1,
+			"questionNumber" : 1,
+			"title" : "1. What is the first watch on the moon?",
+			"answers" : [
+				{"answer" : "Seiko SKX007"}, 
+				{"answer" : "Omega Speedmaster"}, 
+				{"answer" : "Rolex Submariner"}, 
+				{"answer" : "Jaeger-LeCoultre Reverso"}
+				],
+			"correctAnswer": "Omega Speedmaster",
+			"points" : 5,
+			"imageURL" : ""
+		},
+		{
+			"_id" : 2,							
+			"questionNumber" : 2,
+			"title" : "2. Which is the most expensive watch of the 4?",
+			"answers" : [
+				{"answer" : "Jaeger-LeCoultre Reverso"}, 
+				{"answer" : "Grand Seiko Snowflake"}, 
+				{"answer" : "Rolex Date-just"}, 
+				{"answer" : "A.Lange and Sohnne Datograph"}
+				],
+			"correctAnswer": "A.Lange and Sohnne Datograph",
+			"points" : 10,
+			"imageURL" : ""
+		},
+		{
+			"_id" : 3,								
+			"questionNumber" : 3,							
+			"title" : "Which of the following comes with a camo nato strap?",
+			"answers" : [
+				{"answer" : "Omega Speedmaster"}, 
+				{"answer" : "Tudor Heritage Blackbay"}, 
+				{"answer" : "Rolex Explorer"}, 
+				{"answer" : "Seiko Turtle"}
+				],
+			"correctAnswer": "Tudor Heritage Blackbay",
+			"points" : 15,
+			"imageURL" : ""
+		},
+		{
+			"_id" : 4,	
+			"questionNumber" : 4,							
+			"title" : "Which watch is made in Germany?",
+			"answers" : [
+				{"answer" : "Sinn 104"}, 
+				{"answer" : "Brietling Navitimer"}, 
+				{"answer" : "Hamilton Ventura"}, 
+				{"answer" : "Longines Heritage 1948"}
+				],
+			"correctAnswer": "Sinn 104",
+			"points" : 20,
+			"imageURL" : ""
+		},
+		{
+			"_id" : 5,								
+			"questionNumber" : 5,							
+			"title" : "Which watch is square in shape?",
+			"answers" : [
+				{"answer" : "Seiko Monster"}, 
+				{"answer" : "Cartier Tank"}, 
+				{"answer" : "G-Shock"}, 
+				{"answer" : "Omega Seasmaster"}
+				],
+			"correctAnswer": "Ance Kujumon",
+			"points" : 25,
+			"imageURL" : ""
+		},
+
+]};
+
+Quizes.insert(quiz1);
+Quizes.insert(quiz2);
