@@ -13,7 +13,7 @@ var userTotalPoints = 0;
 
 Template.quiz.helpers({
 	'returnQuizQuestions': function(){
-    // return Quizes.findOne().questions;
+    return Quizes.findOne({'quizCode' : Session.get('currentQuiz')}).questions;
 	},
 });
 
@@ -21,7 +21,7 @@ Template.quiz.events({
   'click #submitAnswers'(event){
 
     //Retrieving submissions
-    var retrieveSubmission = Submissions.findOne({'user' : Meteor.user().username , 'quizCode' : 123456});      
+    var retrieveSubmission = Submissions.findOne({'user' : Meteor.user().username , 'quizCode' : Session.get('currentQuiz')});      
     var retrieveSubmissionID = retrieveSubmission._id;
     console.log(retrieveSubmissionID);
 
@@ -47,7 +47,7 @@ Template.quiz.events({
       console.log("PRINTING TOTAL POINTS AND SUBMISSIONS DOCUMENT");      
       console.log("Total points for this quiz : " + quizTotalPoints);
       console.log("Submissions document : ");
-      console.log(Submissions.findOne({'user' : Meteor.user().username , 'quizCode' : 123456}));
+      console.log(Submissions.findOne({'user' : Meteor.user().username , 'quizCode' : Session.get('currentQuiz')}));
     }
 
     //Updating total points into Submission.totalPoints 

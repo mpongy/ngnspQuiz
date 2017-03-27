@@ -4,8 +4,11 @@ Submissions = new Mongo.Collection('submissions');
 Quizes = new Mongo.Collection('quizes');
 QuizUsers = new Mongo.Collection('quizusers');
 
+
 var quiz1 = {
 	'quizCode' : 123456,
+	'edition' : 1,
+	'active' : true,
 	'questions' : [
 		{
 			"_id" : 1,
@@ -82,6 +85,8 @@ var quiz1 = {
 
 var quiz2 = {
 	'quizCode' : 456789,
+	'edition' : 2,
+	'active' : false,	
 	'questions' : [
 		{
 			"_id" : 1,
@@ -156,5 +161,9 @@ var quiz2 = {
 
 ]};
 
-Quizes.insert(quiz1);
-Quizes.insert(quiz2);
+var totalQuizes= Quizes.find().count();
+if(totalQuizes<1)
+{
+	Quizes.insert(quiz1);
+	Quizes.insert(quiz2);
+}

@@ -29,6 +29,8 @@ Template.login.events({
 		var dateOfBirthVar = event.target.inputDateOfBirth.value;
 		var checkbox = event.target.inputCheckbox.checked; 
 		var quizCodeInt = parseInt(quizCodeVar);
+		var quizItem = Quizes.findOne({'quizCode' : quizCodeInt});
+		var editionNumber = quizItem.edition;
 
 		console.log("Quiz code: " + quizCodeVar);
 		console.log(quizCodeVar);
@@ -36,7 +38,8 @@ Template.login.events({
 		console.log("DOB: " + dateOfBirthVar);
 		console.log("Checkbox: " + checkbox);
 
-		if(Quizes.findOne({'quizCode' : quizCodeInt})){
+
+		if(quizItem.active == true){
 			if (event.target.inputCheckbox.checked){
 				Meteor.loginWithPassword(playerNameVar, dateOfBirthVar, function(error){
 				    if(error){
@@ -45,13 +48,17 @@ Template.login.events({
 				    } else {
  						if(Submissions.findOne({'user': playerNameVar, 'quizCode': quizCodeInt})){
  							console.log(Submissions.findOne({'user': playerNameVar, 'quizCode': quizCodeInt}));
-							console.log('submission exists!');				    		 			
+							console.log('submission exists!');		
+							Session.set('quizCode', quizCodeInt);
+							console.log("session quiz number is " + Session.get('quizCode'))		    		 			 							
  							Router.go("/quiz");
  						}
  						else{
  							console.log('insert new submission!');				    		 
 				    		insertSubmission();
  							console.log(Submissions.findOne({'user': playerNameVar, 'quizCode': quizCodeInt}));
+ 							Session.set('quizCode', quizCodeInt);
+							console.log("session quiz number is " + Session.get('quizCode'))		    		 			 							
 							Router.go("/quiz");					
  						}
 				    }
@@ -77,10 +84,8 @@ function checkSubmission(){
 function insertSubmission(){
 	console.log("inserting!");
 	Submissions.insert({
-				'editionNumber': 1,
-				'quizCode' : 123456,
+				'editionNumber': editionNumber,
+				'quizCode' : quizCodeInt,
 				'user' : 'yuehao.pan',
-				'year' : 2017,
-				'week' : 11,
 	});
 }

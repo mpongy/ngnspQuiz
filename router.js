@@ -9,11 +9,8 @@ Router.route('/', function () {
   });
 });
       
-Router.route('/quiz/:quizNumber', function () {
+Router.route('/quiz', function () {
   this.render('quiz', {
-    data: function(){
-      return Quizes.findOne().questions;
-    }
   });
 });
      
